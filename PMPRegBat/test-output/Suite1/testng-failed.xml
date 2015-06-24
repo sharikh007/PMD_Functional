@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite1]">
+  <test name="test2(failed)">
+    <classes>
+      <class name="comregpro.RegproclsOne">
+        <methods>
+          <include name="AF"/>
+          <include name="LoginPageResTest" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- comregpro.RegproclsOne -->
+    </classes>
+  </test> <!-- test2(failed) -->
+</suite> <!-- Failed suite [Suite1] -->
