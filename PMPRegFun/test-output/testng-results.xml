@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="59638" started-at="2015-06-24T10:05:54Z" finished-at="2015-06-24T10:06:54Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="59638" started-at="2015-06-24T10:05:54Z" finished-at="2015-06-24T10:06:54Z">
+      <class name="functionalitycheckpro.Expchk">
+        <test-method status="PASS" signature="expcheck()[pri:0, instance:functionalitycheckpro.Expchk@12b523c]" name="expcheck" duration-ms="59623" started-at="2015-06-24T15:35:54Z" finished-at="2015-06-24T15:36:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- expcheck -->
+      </class> <!-- functionalitycheckpro.Expchk -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
