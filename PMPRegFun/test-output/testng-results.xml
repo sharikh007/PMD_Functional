@@ -1,53 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="107630" started-at="2015-06-25T11:56:52Z" finished-at="2015-06-25T11:58:40Z">
+  <suite name="Default suite" duration-ms="73419" started-at="2015-06-25T12:36:31Z" finished-at="2015-06-25T12:37:45Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="107630" started-at="2015-06-25T11:56:52Z" finished-at="2015-06-25T11:58:40Z">
-      <class name="functionalitycheckpro.FunctionalityCheck">
-        <test-method status="PASS" signature="befmethod(java.lang.String)[pri:0, instance:functionalitycheckpro.FunctionalityCheck@c1abcf]" name="befmethod" is-config="true" duration-ms="6592" started-at="2015-06-25T17:26:52Z" finished-at="2015-06-25T17:26:59Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[firefox]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- befmethod -->
-        <test-method status="PASS" signature="logincheck(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:functionalitycheckpro.FunctionalityCheck@c1abcf]" name="logincheck" duration-ms="48634" started-at="2015-06-25T17:26:59Z" data-provider="myTest" finished-at="2015-06-25T17:27:48Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[https://staging.myemedfusion.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[admin]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Wellness58]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logincheck -->
-        <test-method status="PASS" signature="PaymentCheck()[pri:0, instance:functionalitycheckpro.FunctionalityCheck@c1abcf]" name="PaymentCheck" duration-ms="52125" started-at="2015-06-25T17:27:48Z" finished-at="2015-06-25T17:28:40Z">
+    <test name="Default test" duration-ms="73419" started-at="2015-06-25T12:36:31Z" finished-at="2015-06-25T12:37:45Z">
+      <class name="functionalitycheckpro.Expchk">
+        <test-method status="PASS" signature="PaymentCheck()[pri:0, instance:functionalitycheckpro.Expchk@14c92a7]" name="PaymentCheck" duration-ms="73403" started-at="2015-06-25T18:06:31Z" finished-at="2015-06-25T18:07:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- PaymentCheck -->
-        <test-method status="PASS" signature="aftertest()[pri:0, instance:functionalitycheckpro.FunctionalityCheck@c1abcf]" name="aftertest" is-config="true" duration-ms="0" started-at="2015-06-25T17:28:40Z" finished-at="2015-06-25T17:28:40Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- aftertest -->
-      </class> <!-- functionalitycheckpro.FunctionalityCheck -->
+      </class> <!-- functionalitycheckpro.Expchk -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

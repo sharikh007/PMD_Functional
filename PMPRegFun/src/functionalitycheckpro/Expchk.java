@@ -47,19 +47,7 @@ public class Expchk {
         new Thread().currentThread().sleep(5000);
         Select selectone=new Select(dri.findElement(By.xpath("//*[@id='ctl00_ContentPlace" +
         		                                             "Holder1_ddlCardTypes']")));
-        selectone.selectByValue("Visa");
-        DateFormat dateFormat = new SimpleDateFormat("yyyy");
-        Date date = new Date();
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-        		                 "ddlMonth']")).sendKeys("5");
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-        		                 "_ddlYear']")).sendKeys(Integer.toString
-        		                		        (Integer.parseInt(dateFormat
-        		                		        .format(date))+1));
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtCardNumber']" +
-        		                 "")).sendKeys("4111111111111111");
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtCVV']" +
-        "")).sendKeys("123");
+        selectone.selectByValue("Split Payments");
         dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_chkMail']")).click();
         dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnComplete" +
         		                 "Transaction']")).click();
@@ -67,8 +55,7 @@ public class Expchk {
         (ExpectedConditions.visibilityOfElementLocated
         (By.id("ctl00_ContentPlaceHolder1_lblsucc")));
         Boolean b=dri.findElement(By.id("ctl00_ContentPlaceHolder1_lblsucc"))
-                                    .getText().contains("Thank you for your payment" +
-                                    		            ". Transaction ID=");
+                                    .getText().contains("Thank you for your payment");
         Assert.assertTrue(b,"Payment is not taking place properly");
         }
 	@Test(testName="Secure Communication Check",enabled=false,priority=2)
