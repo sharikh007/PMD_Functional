@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="90440" started-at="2015-06-25T06:53:31Z" finished-at="2015-06-25T06:55:02Z">
+  <suite name="Default suite" duration-ms="107630" started-at="2015-06-25T11:56:52Z" finished-at="2015-06-25T11:58:40Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="90440" started-at="2015-06-25T06:53:31Z" finished-at="2015-06-25T06:55:02Z">
+    <test name="Default test" duration-ms="107630" started-at="2015-06-25T11:56:52Z" finished-at="2015-06-25T11:58:40Z">
       <class name="functionalitycheckpro.FunctionalityCheck">
-        <test-method status="PASS" signature="befmethod(java.lang.String)[pri:0, instance:functionalitycheckpro.FunctionalityCheck@30d5aa]" name="befmethod" is-config="true" duration-ms="12502" started-at="2015-06-25T12:23:31Z" finished-at="2015-06-25T12:23:44Z">
+        <test-method status="PASS" signature="befmethod(java.lang.String)[pri:0, instance:functionalitycheckpro.FunctionalityCheck@c1abcf]" name="befmethod" is-config="true" duration-ms="6592" started-at="2015-06-25T17:26:52Z" finished-at="2015-06-25T17:26:59Z">
           <params>
             <param index="0">
               <value>
@@ -18,7 +18,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- befmethod -->
-        <test-method status="PASS" signature="logincheck(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:functionalitycheckpro.FunctionalityCheck@30d5aa]" name="logincheck" duration-ms="30743" started-at="2015-06-25T12:23:45Z" data-provider="myTest" finished-at="2015-06-25T12:24:15Z">
+        <test-method status="PASS" signature="logincheck(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:functionalitycheckpro.FunctionalityCheck@c1abcf]" name="logincheck" duration-ms="48634" started-at="2015-06-25T17:26:59Z" data-provider="myTest" finished-at="2015-06-25T17:27:48Z">
           <params>
             <param index="0">
               <value>
@@ -39,11 +39,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logincheck -->
-        <test-method status="PASS" signature="SecureCommunicationCheck()[pri:0, instance:functionalitycheckpro.FunctionalityCheck@30d5aa]" name="SecureCommunicationCheck" duration-ms="46415" started-at="2015-06-25T12:24:15Z" finished-at="2015-06-25T12:25:02Z">
+        <test-method status="PASS" signature="PaymentCheck()[pri:0, instance:functionalitycheckpro.FunctionalityCheck@c1abcf]" name="PaymentCheck" duration-ms="52125" started-at="2015-06-25T17:27:48Z" finished-at="2015-06-25T17:28:40Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SecureCommunicationCheck -->
-        <test-method status="PASS" signature="aftertest()[pri:0, instance:functionalitycheckpro.FunctionalityCheck@30d5aa]" name="aftertest" is-config="true" duration-ms="0" started-at="2015-06-25T12:25:02Z" finished-at="2015-06-25T12:25:02Z">
+        </test-method> <!-- PaymentCheck -->
+        <test-method status="PASS" signature="aftertest()[pri:0, instance:functionalitycheckpro.FunctionalityCheck@c1abcf]" name="aftertest" is-config="true" duration-ms="0" started-at="2015-06-25T17:28:40Z" finished-at="2015-06-25T17:28:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- aftertest -->

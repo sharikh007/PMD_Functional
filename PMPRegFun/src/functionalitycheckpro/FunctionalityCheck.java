@@ -5,6 +5,9 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import jxl.JXLException;
 import jxl.Sheet;
@@ -541,16 +544,18 @@ public class FunctionalityCheck {
 		 Assert.assertTrue(b,"Image isn't getting uploaded");		
 	 }
 	 
-	 @Test(testName="Secure Communication Check",enabled=true,priority=2)
-		public void SecureCommunicationCheck() throws InterruptedException, AWTException{
+	 @Test(testName="Secure Communication Check",enabled=false,priority=2)
+		public void SecureCommunicationCheck() 
+	    throws InterruptedException, AWTException{
 		 String url=dri.getCurrentUrl();
 		 if(url.contains("epp")){
-			 throw new SkipException("On epp , Soapnote cannot be tested");
+			 throw new SkipException("On epp , PMP Secure Communication" +
+			 		                 " cannot be tested");
 		 }
 			dri.findElement(By.id("ctl00_NavigationMenu1_LinkButton1")).click();
 			new WebDriverWait(dri, 50).until
-		                      (ExpectedConditions.visibilityOfElementLocated
-			                  (By.id("ctl00_ContentPlaceHolder1_g" +
+		                     (ExpectedConditions.visibilityOfElementLocated
+			                 (By.id("ctl00_ContentPlaceHolder1_g" +
 			                  		"rdPatients_ctl02_ImageButton1")));
 			dri.findElement(By.id("ctl00_ContentPlaceHolder1_g" +
 					              "rdPatients_ctl02_ImageButton1"))
@@ -561,12 +566,14 @@ public class FunctionalityCheck {
 			boolean b=dri.findElement(By.id("ctl00_ContentPlaceHolder1" +
 					                        "_ChkUseEmail")).isSelected();
 			if(b==false){
-				dri.findElement(By.id("ctl00_ContentPlaceHolder1_ChkUseEmail")).click();
-			}
+				dri.findElement(By.id("ctl00_ContentPlaceHolder1" +
+						              "_ChkUseEmail")).click();
+				}
 			new WebDriverWait(dri, 50).until
 	        (ExpectedConditions.visibilityOfElementLocated
 	        (By.id("ctl00_ContentPlaceHolder1_ChkUseEmail")));
-			dri.findElement(By.id("ctl00_ContentPlaceHolder1_btnSecureComm")).click();
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_" +
+					              "btnSecureComm")).click();
 			new WebDriverWait(dri, 50).until
 	        (ExpectedConditions.visibilityOfElementLocated
 	        (By.id("ctl00_ContentPlaceHolder1_txtSubject")));
@@ -583,10 +590,62 @@ public class FunctionalityCheck {
 	        (ExpectedConditions.visibilityOfElementLocated
 	        (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Fieldset4']" +
 	        		  "/table/tbody/tr[1]/td[2]")));
-			Boolean c=dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_DataListSecMsgs" +
-					                 "_ctl02_lblMessage']")).getText().contains("This is for test");
+			Boolean c=dri.findElement(By.xpath("//*[@id='ctl00_" +
+					                           "ContentPlaceHolder1_DataListSecMsgs" +
+					                           "_ctl02_lblMessage']")).getText()
+					                           .contains("This is for test");
 			Assert.assertTrue(c,"Secure Message isn't delivered");
 			}
+	 @Test(testName="Payment Check",enabled=true,priority=2)
+		public void PaymentCheck() throws InterruptedException, AWTException{
+		    String url=dri.getCurrentUrl();
+		    if(url.contains("epp")){
+			 throw new SkipException("On epp , PMP Secure Communication" +
+			 		                 " cannot be tested");
+			 }
+			dri.findElement(By.id("ctl00_NavigationMenu1_LinkButton1")).click();
+			new WebDriverWait(dri, 50).until
+		                     (ExpectedConditions.visibilityOfElementLocated
+			                 (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grd" +
+			                 		"Patients_ctl02_imgbtnPayment']")));
+			dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grd" +
+					              "Patients_ctl02_imgbtnPayment']")).click();
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_BtnProducts']")));
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+	        		                 "BtnProducts']")).click();
+	        new Thread().currentThread().sleep(5000);
+	        Select select=new Select(dri.findElement(By.id("ctl00_ContentPlace" +
+	        		                                       "Holder1_ddlProgramNameTarge")));
+	        select.selectByValue("12002");
+	        new Thread().currentThread().sleep(5000);
+	        Select selectone=new Select(dri.findElement(By.xpath("//*[@id='ctl00_ContentPlace" +
+	        		                                             "Holder1_ddlCardTypes']")));
+	        selectone.selectByValue("Visa");
+	        DateFormat dateFormat = new SimpleDateFormat("yyyy");
+	        Date date = new Date();
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+	        		                 "ddlMonth']")).sendKeys("5");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+	        		                 "_ddlYear']")).sendKeys(Integer.toString
+	        		                		        (Integer.parseInt(dateFormat
+	        		                		        .format(date))+1));
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtCardNumber']" +
+	        		                 "")).sendKeys("4111111111111111");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtCVV']" +
+	        "")).sendKeys("123");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_chkMail']")).click();
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnComplete" +
+	        		                 "Transaction']")).click();
+	        new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.id("ctl00_ContentPlaceHolder1_lblsucc")));
+	        Boolean b=dri.findElement(By.id("ctl00_ContentPlaceHolder1_lblsucc"))
+	                                    .getText().contains("Thank you for your payment" +
+	                                    		            ". Transaction ID=");
+	        Assert.assertTrue(b,"Payment is not taking place properly");
+	        }
 	 
 	     public void dircheck() throws IOException, InterruptedException{
 			boolean b=false,f=false;

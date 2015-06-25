@@ -3,6 +3,9 @@ package functionalitycheckpro;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,13 +13,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class Expchk {
 	
-	@Test(testName="Secure Communication Check",enabled=true,priority=2)
-	public void SecureCommunicationCheck() throws InterruptedException, AWTException{
+	@Test(testName="Payment Check",enabled=true,priority=2)
+	public void PaymentCheck() throws InterruptedException, AWTException{
 		System.getProperty("webdriver.chrome.driver","/path/to/chromedriver");
 		WebDriver dri=new FirefoxDriver();
 		dri.get("https://staging.myemedfusion.com");
@@ -25,30 +30,54 @@ public class Expchk {
 		dri.findElement(By.name("Login1$LoginButton")).click();
 		dri.findElement(By.id("ctl00_NavigationMenu1_LinkButton1")).click();
 		new WebDriverWait(dri, 50).until
-	                      (ExpectedConditions.visibilityOfElementLocated
-		                  (By.id("ctl00_ContentPlaceHolder1_g" +
-		                  		"rdPatients_ctl02_ImageButton1")));
-		dri.findElement(By.id("ctl00_ContentPlaceHolder1_g" +
-				              "rdPatients_ctl02_ImageButton1"))
-				              .click();
+	                     (ExpectedConditions.visibilityOfElementLocated
+		                 (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grd" +
+		                 		"Patients_ctl02_imgbtnPayment']")));
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grd" +
+				              "Patients_ctl02_imgbtnPayment']")).click();
 		new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
-        (By.id("ctl00_ContentPlaceHolder1_ChkUseEmail")));
-		boolean b=dri.findElement(By.id("ctl00_ContentPlaceHolder1" +
-				                        "_ChkUseEmail")).isSelected();
-		if(b==false){
-			dri.findElement(By.id("ctl00_ContentPlaceHolder1_ChkUseEmail")).click();
-		}
-		new WebDriverWait(dri, 50).until
+        (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_BtnProducts']")));
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+        		                 "BtnProducts']")).click();
+        new Thread().currentThread().sleep(5000);
+        Select select=new Select(dri.findElement(By.id("ctl00_ContentPlace" +
+        		                                       "Holder1_ddlProgramNameTarge")));
+        select.selectByValue("12002");
+        new Thread().currentThread().sleep(5000);
+        Select selectone=new Select(dri.findElement(By.xpath("//*[@id='ctl00_ContentPlace" +
+        		                                             "Holder1_ddlCardTypes']")));
+        selectone.selectByValue("Visa");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy");
+        Date date = new Date();
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+        		                 "ddlMonth']")).sendKeys("5");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+        		                 "_ddlYear']")).sendKeys(Integer.toString
+        		                		        (Integer.parseInt(dateFormat
+        		                		        .format(date))+1));
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtCardNumber']" +
+        		                 "")).sendKeys("4111111111111111");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtCVV']" +
+        "")).sendKeys("123");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_chkMail']")).click();
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnComplete" +
+        		                 "Transaction']")).click();
+        new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
-        (By.id("ctl00_ContentPlaceHolder1_ChkUseEmail")));
-		dri.findElement(By.id("ctl00_ContentPlaceHolder1_btnSecureComm")).click();
-		new WebDriverWait(dri, 50).until
-        (ExpectedConditions.visibilityOfElementLocated
-        (By.id("ctl00_ContentPlaceHolder1_txtSubject")));
-		dri.findElement(By.id("ctl00_ContentPlaceHolder1_txtSubject")).sendKeys("Test Mail");
-		((JavascriptExecutor)dri).executeScript("tinyMCE.activeEditor.setContent('This is for test')");
-		dri.findElement(By.id("ctl00_ContentPlaceHolder1_btnsend")).click();
-		}
+        (By.id("ctl00_ContentPlaceHolder1_lblsucc")));
+        Boolean b=dri.findElement(By.id("ctl00_ContentPlaceHolder1_lblsucc"))
+                                    .getText().contains("Thank you for your payment" +
+                                    		            ". Transaction ID=");
+        Assert.assertTrue(b,"Payment is not taking place properly");
+        }
+	@Test(testName="Secure Communication Check",enabled=false,priority=2)
+	public void SecureCommunicationCheckOne(){
+		DateFormat dateFormat = new SimpleDateFormat("yyyy");
+        Date date = new Date();
+        String dte=Integer.toString(Integer.parseInt(dateFormat.format(date))+1);
+        
+        
+	}
 		}
 	
