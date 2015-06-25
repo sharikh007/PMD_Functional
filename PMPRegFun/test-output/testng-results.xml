@@ -1,17 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="59638" started-at="2015-06-24T10:05:54Z" finished-at="2015-06-24T10:06:54Z">
+  <suite name="Default suite" duration-ms="90440" started-at="2015-06-25T06:53:31Z" finished-at="2015-06-25T06:55:02Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="59638" started-at="2015-06-24T10:05:54Z" finished-at="2015-06-24T10:06:54Z">
-      <class name="functionalitycheckpro.Expchk">
-        <test-method status="PASS" signature="expcheck()[pri:0, instance:functionalitycheckpro.Expchk@12b523c]" name="expcheck" duration-ms="59623" started-at="2015-06-24T15:35:54Z" finished-at="2015-06-24T15:36:54Z">
+    <test name="Default test" duration-ms="90440" started-at="2015-06-25T06:53:31Z" finished-at="2015-06-25T06:55:02Z">
+      <class name="functionalitycheckpro.FunctionalityCheck">
+        <test-method status="PASS" signature="befmethod(java.lang.String)[pri:0, instance:functionalitycheckpro.FunctionalityCheck@30d5aa]" name="befmethod" is-config="true" duration-ms="12502" started-at="2015-06-25T12:23:31Z" finished-at="2015-06-25T12:23:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- expcheck -->
-      </class> <!-- functionalitycheckpro.Expchk -->
+        </test-method> <!-- befmethod -->
+        <test-method status="PASS" signature="logincheck(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:functionalitycheckpro.FunctionalityCheck@30d5aa]" name="logincheck" duration-ms="30743" started-at="2015-06-25T12:23:45Z" data-provider="myTest" finished-at="2015-06-25T12:24:15Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://staging.myemedfusion.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Wellness58]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logincheck -->
+        <test-method status="PASS" signature="SecureCommunicationCheck()[pri:0, instance:functionalitycheckpro.FunctionalityCheck@30d5aa]" name="SecureCommunicationCheck" duration-ms="46415" started-at="2015-06-25T12:24:15Z" finished-at="2015-06-25T12:25:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SecureCommunicationCheck -->
+        <test-method status="PASS" signature="aftertest()[pri:0, instance:functionalitycheckpro.FunctionalityCheck@30d5aa]" name="aftertest" is-config="true" duration-ms="0" started-at="2015-06-25T12:25:02Z" finished-at="2015-06-25T12:25:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- aftertest -->
+      </class> <!-- functionalitycheckpro.FunctionalityCheck -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

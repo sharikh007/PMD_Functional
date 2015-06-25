@@ -31,7 +31,7 @@ import org.testng.annotations.Test;
 public class FunctionalityCheck {
 	WebDriver dri;
 	@DataProvider(name = "myTest")
-    public Object[][] createData1() throws JXLException, IOException {
+      public Object[][] createData1() throws JXLException, IOException {
 
 	   FileInputStream fi = new FileInputStream(System.getProperty("user.home")+"/Desktop/PMR/URL/PractiseURLs.xls");
 		Workbook w = Workbook.getWorkbook(fi);
@@ -55,7 +55,7 @@ public class FunctionalityCheck {
      }
 	@BeforeTest
 	@Parameters("browser")
-	public void befmethod(String browser){
+	  public void befmethod(String browser){
 		if(browser.equalsIgnoreCase("firefox")){
 			dri=new FirefoxDriver();
 		}
@@ -66,7 +66,7 @@ public class FunctionalityCheck {
 	}
 	
 	@Test(testName="logincheck",dataProvider="myTest",enabled=true,priority=1)
-	public void logincheck(String url,String username,String password) throws InterruptedException, IOException{
+	  public void logincheck(String url,String username,String password) throws InterruptedException, IOException{
 	   dri.get(url);
 	   if(url.contains("epp")){
 	   dri.findElement(By.name("Login1$UserName")).sendKeys(username);
@@ -102,7 +102,7 @@ public class FunctionalityCheck {
 	}
 	
 	 @Test(testName="rxcreation_save_transmitcheck",dependsOnMethods="logincheck",enabled=false)
-	 public void rxcreation() throws InterruptedException, AWTException, IOException{
+	   public void rxcreation() throws InterruptedException, AWTException, IOException{
 		 String url=dri.getCurrentUrl();
 		 if(url.contains("epp")){
 			 throw new SkipException("On epp , Rx cannot be tested");
@@ -175,7 +175,7 @@ public class FunctionalityCheck {
 		Assert.assertTrue(c);
 		}
 	 @Test(testName="SoapNoteSectionCheck",dependsOnMethods="logincheck",enabled=false)
-	 public void soapnotesectioncheck() throws InterruptedException{
+	   public void soapnotesectioncheck() throws InterruptedException{
 		 String url=dri.getCurrentUrl();
 		 if(url.contains("epp")){
 			 throw new SkipException("On epp , Soapnote cannot be tested");
@@ -241,7 +241,7 @@ public class FunctionalityCheck {
 	     }
 	 
 	 @Test(testName="SoapNotePlanIntegration",enabled=false,priority=2)
-	 public void SoapNotePlanIntegration() throws InterruptedException, AWTException{
+	   public void SoapNotePlanIntegration() throws InterruptedException, AWTException{
 		 String url=dri.getCurrentUrl();
 		 if(url.contains("epp")){
 			 throw new SkipException("On epp , Soapnote cannot be tested");
@@ -336,7 +336,7 @@ public class FunctionalityCheck {
         }
 	 
 	 @Test(testName="SoapNoteHistoryIntegration",enabled=false,priority=2)
-	 public void SoapNotePatientHistoryIntegration() throws InterruptedException, AWTException{
+	   public void SoapNotePatientHistoryIntegration() throws InterruptedException, AWTException{
 		 String url=dri.getCurrentUrl();
 		 if(url.contains("epp")){
 			 throw new SkipException("On epp , Soapnote cannot be tested");
@@ -465,7 +465,7 @@ public class FunctionalityCheck {
 	 }
 	 
 	 @Test(testName="FollowupCreationCheck",enabled=false,priority=2)
-	 public void FollowUpCreationCheck() throws InterruptedException, AWTException{
+	   public void FollowUpCreationCheck() throws InterruptedException, AWTException{
 		 String url=dri.getCurrentUrl();
 		 if(url.contains("epp")){
 			 throw new SkipException("On epp , Soapnote cannot be tested");
@@ -503,8 +503,8 @@ public class FunctionalityCheck {
 	    Assert.assertTrue(b,"Follow-up not getting created.");
 	 }
 	 
-	 @Test(testName="ImageUploadingCheck",enabled=true,priority=2)
-	 public void ImageUploadingCheck() throws InterruptedException, AWTException{
+	 @Test(testName="ImageUploadingCheck",enabled=false,priority=2)
+	   public void ImageUploadingCheck() throws InterruptedException, AWTException{
 		 String url=dri.getCurrentUrl();
 		 if(url.contains("epp")){
 			 throw new SkipException("On epp , Soapnote cannot be tested");
@@ -540,6 +540,53 @@ public class FunctionalityCheck {
 					                  .getText().contains("File Uploaded Successfully!");
 		 Assert.assertTrue(b,"Image isn't getting uploaded");		
 	 }
+	 
+	 @Test(testName="Secure Communication Check",enabled=true,priority=2)
+		public void SecureCommunicationCheck() throws InterruptedException, AWTException{
+		 String url=dri.getCurrentUrl();
+		 if(url.contains("epp")){
+			 throw new SkipException("On epp , Soapnote cannot be tested");
+		 }
+			dri.findElement(By.id("ctl00_NavigationMenu1_LinkButton1")).click();
+			new WebDriverWait(dri, 50).until
+		                      (ExpectedConditions.visibilityOfElementLocated
+			                  (By.id("ctl00_ContentPlaceHolder1_g" +
+			                  		"rdPatients_ctl02_ImageButton1")));
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_g" +
+					              "rdPatients_ctl02_ImageButton1"))
+					              .click();
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.id("ctl00_ContentPlaceHolder1_ChkUseEmail")));
+			boolean b=dri.findElement(By.id("ctl00_ContentPlaceHolder1" +
+					                        "_ChkUseEmail")).isSelected();
+			if(b==false){
+				dri.findElement(By.id("ctl00_ContentPlaceHolder1_ChkUseEmail")).click();
+			}
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.id("ctl00_ContentPlaceHolder1_ChkUseEmail")));
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_btnSecureComm")).click();
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.id("ctl00_ContentPlaceHolder1_txtSubject")));
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_txtSubject"))
+			                  .sendKeys("Test Mail");
+			((JavascriptExecutor)dri).executeScript("tinyMCE.activeEditor" +
+					                                ".setContent('This is for test')");
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_btnsend")).click();
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.id("ctl00_ContentPlaceHolder1_Button4")));
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_Button4")).click();
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Fieldset4']" +
+	        		  "/table/tbody/tr[1]/td[2]")));
+			Boolean c=dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_DataListSecMsgs" +
+					                 "_ctl02_lblMessage']")).getText().contains("This is for test");
+			Assert.assertTrue(c,"Secure Message isn't delivered");
+			}
 	 
 	     public void dircheck() throws IOException, InterruptedException{
 			boolean b=false,f=false;

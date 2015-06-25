@@ -15,8 +15,8 @@ import org.testng.annotations.*;
 
 public class Expchk {
 	
-	@Test
-	public void expcheck() throws InterruptedException, AWTException{
+	@Test(testName="Secure Communication Check",enabled=true,priority=2)
+	public void SecureCommunicationCheck() throws InterruptedException, AWTException{
 		System.getProperty("webdriver.chrome.driver","/path/to/chromedriver");
 		WebDriver dri=new FirefoxDriver();
 		dri.get("https://staging.myemedfusion.com");
@@ -26,35 +26,29 @@ public class Expchk {
 		dri.findElement(By.id("ctl00_NavigationMenu1_LinkButton1")).click();
 		new WebDriverWait(dri, 50).until
 	                      (ExpectedConditions.visibilityOfElementLocated
-		                  (By.id("ctl00_ContentPlaceHolder1_" +
-		                  		"grdPatients_ctl02_ImageButton3")));
-		dri.findElement(By.id("ctl00_ContentPlaceHolder1_" +
-				              "grdPatients_ctl02_ImageButton3"))
+		                  (By.id("ctl00_ContentPlaceHolder1_g" +
+		                  		"rdPatients_ctl02_ImageButton1")));
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_g" +
+				              "rdPatients_ctl02_ImageButton1"))
 				              .click();
-		dri.navigate().to("http://staging.myemedfusion.com/EmrLite.aspx");
-		dri.switchTo().alert().accept();
 		new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
-        (By.xpath("//li[13]/a")));
-		dri.findElement(By.xpath("//li[13]/a")).click();
+        (By.id("ctl00_ContentPlaceHolder1_ChkUseEmail")));
+		boolean b=dri.findElement(By.id("ctl00_ContentPlaceHolder1" +
+				                        "_ChkUseEmail")).isSelected();
+		if(b==false){
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_ChkUseEmail")).click();
+		}
 		new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
-        (By.id("ctl00_ContentPlaceHolder1_patientFile")));
-		dri.findElement(By.id("ctl00_ContentPlaceHolder1_patientFile"))
-		                  .sendKeys("/home/sayed/Desktop/" +
-		                  		    "Screenshot from 2015-06-24 11:29:47.png");
-		dri.findElement(By.id("ctl00_ContentPlaceHolder1" +
-				              "_txtDescription")).sendKeys("This is for the testing.");
-		dri.findElement(By.id("ctl00_ContentPlaceHolder1_btnUpload")).click();
+        (By.id("ctl00_ContentPlaceHolder1_ChkUseEmail")));
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_btnSecureComm")).click();
 		new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
-        (By.id("ctl00_ContentPlaceHolder1_lblError")));
-		boolean b=dri.findElement(By.id("ctl00_" +
-				                        "ContentPlaceHolder1_lblError"))
-				                        .getText().contains("File Uploaded Successfully!");
-		System.out.println(b);
-		
-	 }
-		
+        (By.id("ctl00_ContentPlaceHolder1_txtSubject")));
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_txtSubject")).sendKeys("Test Mail");
+		((JavascriptExecutor)dri).executeScript("tinyMCE.activeEditor.setContent('This is for test')");
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_btnsend")).click();
+		}
 		}
 	
