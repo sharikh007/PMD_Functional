@@ -21,8 +21,8 @@ import org.testng.annotations.*;
 
 public class Expchk {
 	
-	@Test(testName="Patient Add Check",enabled=true,priority=2)
-	public void PatientAddCheck() throws InterruptedException, AWTException{
+	@Test(testName="Add Guarantor Check",enabled=true,priority=2)
+	public void AddGuarantorCheck() throws InterruptedException, AWTException{
 		System.getProperty("webdriver.chrome.driver","/path/to/chromedriver");
 		WebDriver dri=new FirefoxDriver();
 		dri.get("https://staging.myemedfusion.com");
@@ -35,91 +35,67 @@ public class Expchk {
 	                     (ExpectedConditions.visibilityOfElementLocated
 		                 (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
 		                 		   "txtptFirstName']")));
-		String str=Uniquestring();
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-		                 		   "txtptFirstName']")).sendKeys(str);
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-				              "txtptLastName']")).sendKeys(Uniquestring());
-		Select select = new Select(dri.findElement
-				                  (By.xpath("//*[@id='ctl00_" +
-				                            "ContentPlaceHolder1_" +
-				                            "ddlptMaritalStatus']")));
-		select.selectByValue("S");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
-				              "PrimaryPhone']")).sendKeys("444-444-4444");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
-				              "BillingPhone']")).sendKeys("444-444-4444");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlpt" +
-				                 "DobMonth']")).sendKeys("02");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlpt" +
-				                 "DobDate']")).sendKeys("02");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlpt" +
-				                 "DobYear']")).sendKeys("1984");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_rbtpt" +
-				                 "SexM']")).click();
-		String strone=Uniquestring()+"@mailinator.com";
-		System.out.print("Generated Email Id"+strone);
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
-				                 "Email1']")).sendKeys(strone);
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlptRace'" +
-				                 "]")).sendKeys("African american");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlptTimeZone']"))
-		                  .sendKeys("(GMT -10:00) Hawaii");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtptUsername']"))
-                          .sendKeys(Uniquestring());
-		Select selectone = new Select(dri.findElement
-				                     (By.xpath("//*[@id='ctl00_Content" +
-				                               "PlaceHolder1_ddlptGroup']")));
-		selectone.selectByValue("1");
-		Select selecttwo = new Select(dri.findElement
-				                     (By.xpath("//*[@id='ctl00_ContentPlace" +
-				                               "Holder1_ddlptCategory']")));
-		selecttwo.selectByValue("3");
-		Select selectthree = new Select(dri.findElement
-				                       (By.xpath("//*[@id='ctl00_ContentPlace" +
-				                                 "Holder1_ddlptReferralsource']")));
-		selectthree.selectByValue("1");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
-				                 "BaddressL1']")).sendKeys("Test");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlpt" +
-				                 "BillingCountry']")).sendKeys("India");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
-				                 "BillingCity']")).sendKeys("Test");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
-				                 "BillingState']")).sendKeys("Test");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
-				                 "BillingZip']")).sendKeys("12345");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
-				                 "ShAddressL1']")).sendKeys("Test");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlpt" +
-				                 "ShippingCountry']")).sendKeys("India");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
-				                 "ShippingCity']")).sendKeys("Test");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
-				                 "ShippingState']")).sendKeys("Test");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
-				                 "ShippingZip']")).sendKeys("12345");
-		Select selectfour = new Select(dri.findElement
-                (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlLocation']")));
-        selectfour.selectByValue("12");
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnpt" +
-				                 "Save']")).click();
-		Thread.sleep(5000);
 		dri.findElement(By.id("ctl00_NavigationMenu1_LinkButton1")).click();
 		new WebDriverWait(dri, 50).until
+	                     (ExpectedConditions.visibilityOfElementLocated
+		                 (By.id("ctl00_ContentPlaceHolder1_g" +
+		                  		"rdPatients_ctl02_ImageButton1")));
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_g" +
+				              "rdPatients_ctl02_ImageButton1"))
+				              .click();
+		new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
-        (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_TxtEmail1']")));
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Txt" +
-				                 "Email1']")).sendKeys(strone);
-		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Button1']" +
-				                 "")).click();
-		new WebDriverWait(dri, 50).until(ExpectedConditions.textToBePresentInElement
-				         (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdPatients']/tbody" +
-		                           "/tr[2]/td[4]"), strone));
-		boolean b=dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-				                        "_grdPatients']/tbody/tr[2]/td[4]"))
-				                    .getText().contains(strone);
-		Assert.assertTrue(b,"Patient hasn't got added");
+        (By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+				  "_imgPatGuabtn']")));
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+				              "_imgPatGuabtn']")).click();
+		new WebDriverWait(dri, 50).until
+        (ExpectedConditions.visibilityOfElementLocated
+        (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnAddNewInsuranceRecords']")));
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+        		              "btnAddNewInsuranceRecords']")).click();
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+        		                 "txtCarrierList']")).sendKeys("test");
+        Thread.sleep(5000);
+        Robot robo =new Robot();
+        robo.keyPress(KeyEvent.VK_DOWN);
+        robo.keyRelease(KeyEvent.VK_DOWN);
+        robo.keyPress(KeyEvent.VK_ENTER);
+        robo.keyRelease(KeyEvent.VK_ENTER);
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+        		                 "_btnProceed']")).click();
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+        		                 "TextBox1']")).sendKeys("test");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+        		                 "TextBox3']")).sendKeys("test");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+        		                 "_insuredRelationshiptoPatient']"))
+        		                 .sendKeys("SELF");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+        "txtptPrimaryPhone']")).clear();
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+        		                 "txtptPrimaryPhone']")).sendKeys("444-444-4444");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+        		                 "patientGroupNo']")).sendKeys("5555555555555555");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+        		                 "patientInsuredGroupEmpName']")).sendKeys("wewewe");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+        		                 "_patientPlanType']")).sendKeys("MEDICAID");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+        		                 "_typeofAgreementCode_0']")).click();
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+        		                 "_companyPlanCode']")).sendKeys("44444444444444");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+        		                 "_policyNumber']")).sendKeys("44444444444444");
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+        		                 "_isPrimary']")).click();
+        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+        		                 "_submitPatientInsuranceRecords']")).click();
+        Thread.sleep(5000);
+        robo.keyPress(KeyEvent.VK_TAB);
+        robo.keyRelease(KeyEvent.VK_TAB);
+        robo.keyPress(KeyEvent.VK_ENTER);
+        robo.keyRelease(KeyEvent.VK_ENTER);
 		}
 	@Test(testName="Secure Communication Check",enabled=false,priority=2)
 	public void SecureCommunicationCheckOne(){

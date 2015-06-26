@@ -760,7 +760,7 @@ public class FunctionalityCheck {
 	        Assert.assertTrue(b,"Payment is not taking place properly");
 	        }
 	 
-	 @Test(testName="Patient Add Check",enabled=true,priority=2)
+	 @Test(testName="Patient Add Check",enabled=false,priority=2)
 		public void PatientAddCheck() throws InterruptedException, AWTException{
 		 String url=dri.getCurrentUrl();
 		    if(url.contains("epp")){
@@ -852,10 +852,10 @@ public class FunctionalityCheck {
 			dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Button1']" +
 					                 "")).click();
 			new WebDriverWait(dri, 50).until(ExpectedConditions.textToBePresentInElement
-					         (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdPatients']/tbody" +
-			                           "/tr[2]/td[4]"), strone));
+					         (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+					         		   "grdPatients']/tbody/tr[2]/td[4]"), strone));
 			boolean b=dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-					                        "_grdPatients']/tbody/tr[2]/td[4]"))
+					                           "_grdPatients']/tbody/tr[2]/td[4]"))
 					                    .getText().contains(strone);
 			Assert.assertTrue(b,"Patient hasn't got added");
 			}

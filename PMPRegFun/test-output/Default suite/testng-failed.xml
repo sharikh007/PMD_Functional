@@ -5,7 +5,7 @@
     <classes>
       <class name="functionalitycheckpro.Expchk">
         <methods>
-          <include name="PatientAddCheck"/>
+          <include name="AddGuarantorCheck"/>
         </methods>
       </class> <!-- functionalitycheckpro.Expchk -->
     </classes>
