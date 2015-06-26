@@ -63,7 +63,39 @@ public class Expchk {
 		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlptTimeZone']"))
 		                  .sendKeys("(GMT -10:00) Hawaii");
 		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtptUsername']"))
-        .sendKeys(Uniquestring());
+                          .sendKeys(Uniquestring());
+		Select selectone = new Select(dri.findElement
+				                     (By.xpath("//*[@id='ctl00_Content" +
+				                               "PlaceHolder1_ddlptGroup']")));
+		selectone.selectByValue("1");
+		Select selecttwo = new Select(dri.findElement
+				                     (By.xpath("//*[@id='ctl00_ContentPlace" +
+				                               "Holder1_ddlptCategory']")));
+		selecttwo.selectByValue("3");
+		Select selectthree = new Select(dri.findElement
+				                       (By.xpath("//*[@id='ctl00_ContentPlace" +
+				                                 "Holder1_ddlptReferralsource']")));
+		selectthree.selectByValue("1");
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
+				                 "BaddressL1']")).sendKeys("Test");
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlpt" +
+				                 "BillingCountry']")).sendKeys("India");
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
+				                 "BillingCity']")).sendKeys("Test");
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
+				                 "BillingState']")).sendKeys("Test");
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
+				                 "BillingZip']")).sendKeys("12345");
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
+				                 "ShAddressL1']")).sendKeys("Test");
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlpt" +
+				                 "ShippingCountry']")).sendKeys("India");
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
+				                 "ShippingCity']")).sendKeys("Test");
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
+				                 "ShippingState']")).sendKeys("Test");
+		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_txtpt" +
+				                 "ShippingZip']")).sendKeys("12345");
 		
 		
         }
