@@ -30,7 +30,7 @@ public class Expchk {
 		dri.findElement(By.name("Login1$Password")).sendKeys("Wellness58");
 		dri.findElement(By.name("Login1$LoginButton")).click();
 		dri.findElement(By.xpath("//*[@id='ctl00_NavigationMenu1_" +
-				              "lnkNewPatient']")).click();
+				                 "lnkNewPatient']")).click();
 		new WebDriverWait(dri, 50).until
 	                     (ExpectedConditions.visibilityOfElementLocated
 		                 (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
@@ -41,19 +41,18 @@ public class Expchk {
 		                 (By.id("ctl00_ContentPlaceHolder1_g" +
 		                  		"rdPatients_ctl02_ImageButton1")));
 		dri.findElement(By.id("ctl00_ContentPlaceHolder1_g" +
-				              "rdPatients_ctl02_ImageButton1"))
-				              .click();
+				              "rdPatients_ctl02_ImageButton1")).click();
 		new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
         (By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
 				  "_imgPatGuabtn']")));
 		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-				              "_imgPatGuabtn']")).click();
+				                 "_imgPatGuabtn']")).click();
 		new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
         (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnAddNewInsuranceRecords']")));
         dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-        		              "btnAddNewInsuranceRecords']")).click();
+        		                 "btnAddNewInsuranceRecords']")).click();
         dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
         		                 "txtCarrierList']")).sendKeys("test");
         Thread.sleep(5000);
@@ -92,11 +91,12 @@ public class Expchk {
         dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
         		                 "_submitPatientInsuranceRecords']")).click();
         Thread.sleep(5000);
-        robo.keyPress(KeyEvent.VK_TAB);
-        robo.keyRelease(KeyEvent.VK_TAB);
-        robo.keyPress(KeyEvent.VK_ENTER);
-        robo.keyRelease(KeyEvent.VK_ENTER);
-		}
+        boolean bc=dri.findElement(By.xpath("//*[@id='guarantorCreator']/table" +
+        		                            "/tbody/tr[1]/td")).getText().contains("Is" +
+        		                            " the person who is financially responsible the" +
+        		                            " same as named insured?");
+        Assert.assertTrue(bc,"Guarantor getting added successfully");
+        }
 	@Test(testName="Secure Communication Check",enabled=false,priority=2)
 	public void SecureCommunicationCheckOne(){
 		

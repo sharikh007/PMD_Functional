@@ -859,6 +859,74 @@ public class FunctionalityCheck {
 					                    .getText().contains(strone);
 			Assert.assertTrue(b,"Patient hasn't got added");
 			}
+	 @Test(testName="Add Guarantor Check",enabled=true,priority=2)
+		public void AddGuarantorCheck() throws InterruptedException, AWTException{
+		 String url=dri.getCurrentUrl();
+		    if(url.contains("epp")){
+			 throw new SkipException("On epp , Guarantor cannot be added.");
+			 }
+			dri.findElement(By.id("ctl00_NavigationMenu1_LinkButton1")).click();
+			new WebDriverWait(dri, 50).until
+		                     (ExpectedConditions.visibilityOfElementLocated
+			                 (By.id("ctl00_ContentPlaceHolder1_g" +
+			                  		"rdPatients_ctl02_ImageButton1")));
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_g" +
+					              "rdPatients_ctl02_ImageButton1")).click();
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+					  "_imgPatGuabtn']")));
+			dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+					                 "_imgPatGuabtn']")).click();
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnAddNewInsuranceRecords']")));
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+	        		                 "btnAddNewInsuranceRecords']")).click();
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+	        		                 "txtCarrierList']")).sendKeys("test");
+	        Thread.sleep(5000);
+	        Robot robo =new Robot();
+	        robo.keyPress(KeyEvent.VK_DOWN);
+	        robo.keyRelease(KeyEvent.VK_DOWN);
+	        robo.keyPress(KeyEvent.VK_ENTER);
+	        robo.keyRelease(KeyEvent.VK_ENTER);
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+	        		                 "_btnProceed']")).click();
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+	        		                 "TextBox1']")).sendKeys("test");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+	        		                 "TextBox3']")).sendKeys("test");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+	        		                 "_insuredRelationshiptoPatient']"))
+	        		                 .sendKeys("SELF");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+	        "txtptPrimaryPhone']")).clear();
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+	        		                 "txtptPrimaryPhone']")).sendKeys("444-444-4444");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+	        		                 "patientGroupNo']")).sendKeys("5555555555555555");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
+	        		                 "patientInsuredGroupEmpName']")).sendKeys("wewewe");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+	        		                 "_patientPlanType']")).sendKeys("MEDICAID");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+	        		                 "_typeofAgreementCode_0']")).click();
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+	        		                 "_companyPlanCode']")).sendKeys("44444444444444");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+	        		                 "_policyNumber']")).sendKeys("44444444444444");
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+	        		                 "_isPrimary']")).click();
+	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+	        		                 "_submitPatientInsuranceRecords']")).click();
+	        Thread.sleep(5000);
+	        boolean bc=dri.findElement(By.xpath("//*[@id='guarantorCreator']/table" +
+	        		                            "/tbody/tr[1]/td")).getText().contains("Is" +
+	        		                            " the person who is financially responsible the" +
+	        		                            " same as named insured?");
+	        Assert.assertTrue(bc,"Guarantor getting added successfully");
+	        }
 	     public void dircheck() throws IOException, InterruptedException{
 			boolean b=false,f=false;
 			String a ="Wellness1",c = "Wellness58",d=null;

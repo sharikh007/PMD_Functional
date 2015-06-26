@@ -1,17 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="75905" started-at="2015-06-26T13:16:31Z" finished-at="2015-06-26T13:17:47Z">
+  <suite name="Default suite" duration-ms="79057" started-at="2015-06-26T13:41:53Z" finished-at="2015-06-26T13:43:12Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="75905" started-at="2015-06-26T13:16:31Z" finished-at="2015-06-26T13:17:47Z">
-      <class name="functionalitycheckpro.Expchk">
-        <test-method status="PASS" signature="AddGuarantorCheck()[pri:0, instance:functionalitycheckpro.Expchk@11bee48]" name="AddGuarantorCheck" duration-ms="75885" started-at="2015-06-26T18:46:31Z" finished-at="2015-06-26T18:47:47Z">
+    <test name="Default test" duration-ms="79057" started-at="2015-06-26T13:41:53Z" finished-at="2015-06-26T13:43:12Z">
+      <class name="functionalitycheckpro.FunctionalityCheck">
+        <test-method status="PASS" signature="befmethod(java.lang.String)[pri:0, instance:functionalitycheckpro.FunctionalityCheck@1bc345a]" name="befmethod" is-config="true" duration-ms="12288" started-at="2015-06-26T19:11:53Z" finished-at="2015-06-26T19:12:06Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- befmethod -->
+        <test-method status="PASS" signature="logincheck(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:functionalitycheckpro.FunctionalityCheck@1bc345a]" name="logincheck" duration-ms="22073" started-at="2015-06-26T19:12:06Z" data-provider="myTest" finished-at="2015-06-26T19:12:28Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://staging.myemedfusion.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Wellness58]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logincheck -->
+        <test-method status="PASS" signature="AddGuarantorCheck()[pri:0, instance:functionalitycheckpro.FunctionalityCheck@1bc345a]" name="AddGuarantorCheck" duration-ms="43885" started-at="2015-06-26T19:12:28Z" finished-at="2015-06-26T19:13:12Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AddGuarantorCheck -->
-      </class> <!-- functionalitycheckpro.Expchk -->
+        <test-method status="PASS" signature="aftertest()[pri:0, instance:functionalitycheckpro.FunctionalityCheck@1bc345a]" name="aftertest" is-config="true" duration-ms="0" started-at="2015-06-26T19:13:12Z" finished-at="2015-06-26T19:13:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- aftertest -->
+      </class> <!-- functionalitycheckpro.FunctionalityCheck -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
