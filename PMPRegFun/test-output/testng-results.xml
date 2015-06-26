@@ -2,15 +2,15 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="29" started-at="2015-06-25T13:25:20Z" finished-at="2015-06-25T13:25:20Z">
+  <suite name="Default suite" duration-ms="192138" started-at="2015-06-26T10:02:36Z" finished-at="2015-06-26T10:05:48Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="29" started-at="2015-06-25T13:25:20Z" finished-at="2015-06-25T13:25:20Z">
+    <test name="Default test" duration-ms="192138" started-at="2015-06-26T10:02:36Z" finished-at="2015-06-26T10:05:48Z">
       <class name="functionalitycheckpro.Expchk">
-        <test-method status="PASS" signature="SecureCommunicationCheckOne()[pri:0, instance:functionalitycheckpro.Expchk@7e9505]" name="SecureCommunicationCheckOne" duration-ms="14" started-at="2015-06-25T18:55:20Z" finished-at="2015-06-25T18:55:20Z">
+        <test-method status="PASS" signature="PatientAddCheck()[pri:0, instance:functionalitycheckpro.Expchk@1887dd5]" name="PatientAddCheck" duration-ms="192109" started-at="2015-06-26T15:32:36Z" finished-at="2015-06-26T15:35:48Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SecureCommunicationCheckOne -->
+        </test-method> <!-- PatientAddCheck -->
       </class> <!-- functionalitycheckpro.Expchk -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
