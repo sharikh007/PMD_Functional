@@ -6,11 +6,13 @@ import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,7 +23,7 @@ import org.testng.annotations.*;
 
 public class Expchk {
 	
-	@Test(testName="Add Guarantor Check",enabled=true,priority=2)
+	@Test(testName="Add Insurer Check",enabled=true,priority=2)
 	public void AddGuarantorCheck() throws InterruptedException, AWTException{
 		System.getProperty("webdriver.chrome.driver","/path/to/chromedriver");
 		WebDriver dri=new FirefoxDriver();
@@ -29,12 +31,6 @@ public class Expchk {
 		dri.findElement(By.name("Login1$UserName")).sendKeys("admin");
 		dri.findElement(By.name("Login1$Password")).sendKeys("Wellness58");
 		dri.findElement(By.name("Login1$LoginButton")).click();
-		dri.findElement(By.xpath("//*[@id='ctl00_NavigationMenu1_" +
-				                 "lnkNewPatient']")).click();
-		new WebDriverWait(dri, 50).until
-	                     (ExpectedConditions.visibilityOfElementLocated
-		                 (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-		                 		   "txtptFirstName']")));
 		dri.findElement(By.id("ctl00_NavigationMenu1_LinkButton1")).click();
 		new WebDriverWait(dri, 50).until
 	                     (ExpectedConditions.visibilityOfElementLocated
@@ -50,57 +46,59 @@ public class Expchk {
 				                 "_imgPatGuabtn']")).click();
 		new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
-        (By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnAddNewInsuranceRecords']")));
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-        		                 "btnAddNewInsuranceRecords']")).click();
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-        		                 "txtCarrierList']")).sendKeys("test");
-        Thread.sleep(5000);
-        Robot robo =new Robot();
-        robo.keyPress(KeyEvent.VK_DOWN);
-        robo.keyRelease(KeyEvent.VK_DOWN);
-        robo.keyPress(KeyEvent.VK_ENTER);
-        robo.keyRelease(KeyEvent.VK_ENTER);
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-        		                 "_btnProceed']")).click();
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-        		                 "TextBox1']")).sendKeys("test");
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-        		                 "TextBox3']")).sendKeys("test");
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-        		                 "_insuredRelationshiptoPatient']"))
-        		                 .sendKeys("SELF");
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-        "txtptPrimaryPhone']")).clear();
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-        		                 "txtptPrimaryPhone']")).sendKeys("444-444-4444");
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-        		                 "patientGroupNo']")).sendKeys("5555555555555555");
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-        		                 "patientInsuredGroupEmpName']")).sendKeys("wewewe");
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-        		                 "_patientPlanType']")).sendKeys("MEDICAID");
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-        		                 "_typeofAgreementCode_0']")).click();
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-        		                 "_companyPlanCode']")).sendKeys("44444444444444");
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-        		                 "_policyNumber']")).sendKeys("44444444444444");
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-        		                 "_isPrimary']")).click();
-        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
-        		                 "_submitPatientInsuranceRecords']")).click();
-        Thread.sleep(5000);
-        boolean bc=dri.findElement(By.xpath("//*[@id='guarantorCreator']/table" +
-        		                            "/tbody/tr[1]/td")).getText().contains("Is" +
-        		                            " the person who is financially responsible the" +
-        		                            " same as named insured?");
-        Assert.assertTrue(bc,"Guarantor getting added successfully");
-        }
+        (By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords")));
+		WebElement lis=dri.findElement(By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords"));
+		List<WebElement> liss=lis.findElements(By.tagName("tr"));
+		System.out.print(liss.size());
+		new WebDriverWait(dri, 50).until
+        (ExpectedConditions.visibilityOfElementLocated
+        (By.id("ctl00_ContentPlaceHolder1_btnAddNewGuarantorRecords")));
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_btnAddNewGuaran" +
+				              "torRecords")).click();
+		new WebDriverWait(dri, 50).until
+        (ExpectedConditions.visibilityOfElementLocated
+        (By.id("ctl00_ContentPlaceHolder1_guarantorfirstname")));
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorfirstname" +
+				              "")).sendKeys("Tester");
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorLastName" +
+				              "")).sendKeys("Nameis");
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorCompanyAddress" +
+				              "Line1")).sendKeys("This is for the test");
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorCompanyCountry" +
+				              "")).sendKeys("INDIA");
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorCompanyCity" +
+				              "")).sendKeys("For Test");
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorCompanyState" +
+				              "")).sendKeys("for Test");
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_txtptPrimaryPhone" +
+        "")).clear();
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_txtptPrimaryPhone" +
+				              "")).sendKeys("555-555-5555");
+		dri.findElement(By.id("ctl00_ContentPlaceHolder1_submitPatientGuaran" +
+				              "torRecords")).click();
+		new WebDriverWait(dri, 50).until
+        (ExpectedConditions.visibilityOfElementLocated
+        (By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords")));
+		WebElement lit=dri.findElement(By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords"));
+		List<WebElement> lisss=lit.findElements(By.tagName("tr"));
+		boolean b=lisss.get(liss.size()).getText().contains("TesterNameis");
+		Assert.assertTrue(b,"Guarantor Not Getting Added");
+		}
 	@Test(testName="Secure Communication Check",enabled=false,priority=2)
 	public void SecureCommunicationCheckOne(){
-		
-		
+		WebDriver dri=new FirefoxDriver();
+		dri.get("https://staging.myemedfusion.com");
+		dri.findElement(By.name("Login1$UserName")).sendKeys("admin");
+		dri.findElement(By.name("Login1$Password")).sendKeys("Wellness58");
+		dri.findElement(By.name("Login1$LoginButton")).click();
+		dri.navigate().to("http://staging.myemedfusion.com/" +
+				         "InsuranceGuarantor/InsuranceGuarantor.aspx?pid=10111");
+		new WebDriverWait(dri, 50).until
+        (ExpectedConditions.visibilityOfElementLocated
+        (By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords")));
+		WebElement lis=dri.findElement(By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords"));
+		List<WebElement> liss=lis.findElements(By.tagName("tr"));
+		System.out.print(liss.get(0).getText());		
        }
 	
 public String Uniquestring(){

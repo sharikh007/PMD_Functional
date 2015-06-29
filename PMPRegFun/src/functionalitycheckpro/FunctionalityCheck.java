@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import jxl.JXLException;
@@ -18,6 +19,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -859,8 +861,8 @@ public class FunctionalityCheck {
 					                    .getText().contains(strone);
 			Assert.assertTrue(b,"Patient hasn't got added");
 			}
-	 @Test(testName="Add Guarantor Check",enabled=true,priority=2)
-		public void AddGuarantorCheck() throws InterruptedException, AWTException{
+	 @Test(testName="Add Insurer Check",enabled=false,priority=2)
+		public void AddInsurerCheck() throws InterruptedException, AWTException{
 		 String url=dri.getCurrentUrl();
 		    if(url.contains("epp")){
 			 throw new SkipException("On epp , Guarantor cannot be added.");
@@ -901,7 +903,7 @@ public class FunctionalityCheck {
 	        		                 "_insuredRelationshiptoPatient']"))
 	        		                 .sendKeys("SELF");
 	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
-	        "txtptPrimaryPhone']")).clear();
+	                                 "txtptPrimaryPhone']")).clear();
 	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
 	        		                 "txtptPrimaryPhone']")).sendKeys("444-444-4444");
 	        dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_" +
@@ -925,8 +927,67 @@ public class FunctionalityCheck {
 	        		                            "/tbody/tr[1]/td")).getText().contains("Is" +
 	        		                            " the person who is financially responsible the" +
 	        		                            " same as named insured?");
-	        Assert.assertTrue(bc,"Guarantor getting added successfully");
+	        Assert.assertTrue(bc,"Insurer getting added successfully");
 	        }
+	 @Test(testName="Add Guarantor Check",enabled=false,priority=2)
+		public void AddGuarantorCheck() throws InterruptedException, AWTException{
+		 String url=dri.getCurrentUrl();
+		    if(url.contains("epp")){
+			 throw new SkipException("On epp , Guarantor cannot be added.");
+			 }
+			dri.findElement(By.id("ctl00_NavigationMenu1_LinkButton1")).click();
+			new WebDriverWait(dri, 50).until
+		                     (ExpectedConditions.visibilityOfElementLocated
+			                 (By.id("ctl00_ContentPlaceHolder1_g" +
+			                  		"rdPatients_ctl02_ImageButton1")));
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_g" +
+					              "rdPatients_ctl02_ImageButton1")).click();
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+					  "_imgPatGuabtn']")));
+			dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
+					                 "_imgPatGuabtn']")).click();
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords")));
+			WebElement lis=dri.findElement(By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords"));
+			List<WebElement> liss=lis.findElements(By.tagName("tr"));
+			System.out.print(liss.size());
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.id("ctl00_ContentPlaceHolder1_btnAddNewGuarantorRecords")));
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_btnAddNewGuaran" +
+					              "torRecords")).click();
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.id("ctl00_ContentPlaceHolder1_guarantorfirstname")));
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorfirstname" +
+					              "")).sendKeys("Tester");
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorLastName" +
+					              "")).sendKeys("Nameis");
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorCompanyAddress" +
+					              "Line1")).sendKeys("This is for the test");
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorCompanyCountry" +
+					              "")).sendKeys("INDIA");
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorCompanyCity" +
+					              "")).sendKeys("For Test");
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_guarantorCompanyState" +
+					              "")).sendKeys("for Test");
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_txtptPrimaryPhone" +
+	        "")).clear();
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_txtptPrimaryPhone" +
+					              "")).sendKeys("555-555-5555");
+			dri.findElement(By.id("ctl00_ContentPlaceHolder1_submitPatientGuaran" +
+					              "torRecords")).click();
+			new WebDriverWait(dri, 50).until
+	        (ExpectedConditions.visibilityOfElementLocated
+	        (By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords")));
+			WebElement lit=dri.findElement(By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords"));
+			List<WebElement> lisss=lit.findElements(By.tagName("tr"));
+			boolean b=lisss.get(liss.size()).getText().contains("TesterNameis");
+			Assert.assertTrue(b,"Guarantor Not Getting Added");
+			}
 	     public void dircheck() throws IOException, InterruptedException{
 			boolean b=false,f=false;
 			String a ="Wellness1",c = "Wellness58",d=null;
