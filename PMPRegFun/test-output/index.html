@@ -90,7 +90,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -101,7 +101,12 @@
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="functionalitycheckpro.Expchk" hash-for-method="AddGuarantorCheck">AddGuarantorCheck</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="functionalitycheckpro.FunctionalityCheck" hash-for-method="AddGuarantorCheck">AddGuarantorCheck</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="functionalitycheckpro.FunctionalityCheck" hash-for-method="logincheck(https://staging.myemedfusion.com, admin, Wellness58)">logincheck(https://staging.myemedfusion.com, admin, Wellness58)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -119,7 +124,7 @@
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">functionalitycheckpro.Expchk</span>
+              <span class="class-name">functionalitycheckpro.FunctionalityCheck</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
@@ -129,21 +134,30 @@
                   <span class="method-name">AddGuarantorCheck</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="logincheck(https://staging.myemedfusion.com, admin, Wellness58)">
+                  </a> <!-- logincheck(https://staging.myemedfusion.com, admin, Wellness58) -->
+                  <span class="method-name">logincheck</span>
+                  <span class="parameters">(https://staging.myemedfusion.com, admin, Wellness58)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Default_suite-class-passed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/tmp/testng-eclipse-1537394792/testng-customsuite.xml</span>
+            <span class="header-content">/tmp/testng-eclipse-775104748/testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Default suite&quot;&gt;
+  &lt;parameter name=&quot;browser&quot; value=&quot;firefox&quot;/&gt;
   &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;functionalitycheckpro.Expchk&quot;/&gt;
+      &lt;class name=&quot;functionalitycheckpro.FunctionalityCheck&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -183,11 +197,15 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'AddGuarantorCheck')
-data.setCell(0, 2, 'functionalitycheckpro.Expchk')
-data.setCell(0, 3, 62346);
+data.setCell(0, 2, 'functionalitycheckpro.FunctionalityCheck')
+data.setCell(0, 3, 47147);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'logincheck')
+data.setCell(1, 2, 'functionalitycheckpro.FunctionalityCheck')
+data.setCell(1, 3, 23070);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
@@ -207,13 +225,37 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">1 ignored method</span>
+            <span class="header-content">13 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">functionalitycheckpro.Expchk</span>
+              <span class="ignored-class-name">functionalitycheckpro.FunctionalityCheck</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">SecureCommunicationCheckOne</span>
+                <span class="ignored-method-name">CheckPaymentCheck</span>
+                <br/>
+                <span class="ignored-method-name">soapnotesectioncheck</span>
+                <br/>
+                <span class="ignored-method-name">SoapNotePlanIntegration</span>
+                <br/>
+                <span class="ignored-method-name">SecureCommunicationCheck</span>
+                <br/>
+                <span class="ignored-method-name">ImageUploadingCheck</span>
+                <br/>
+                <span class="ignored-method-name">CreditCardPaymentCheck</span>
+                <br/>
+                <span class="ignored-method-name">SplitPaymentCheck</span>
+                <br/>
+                <span class="ignored-method-name">CashPaymentCheck</span>
+                <br/>
+                <span class="ignored-method-name">AddInsurerCheck</span>
+                <br/>
+                <span class="ignored-method-name">PatientAddCheck</span>
+                <br/>
+                <span class="ignored-method-name">rxcreation</span>
+                <br/>
+                <span class="ignored-method-name">FollowUpCreationCheck</span>
+                <br/>
+                <span class="ignored-method-name">SoapNotePatientHistoryIntegration</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -225,11 +267,23 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">functionalitycheckpro.Expchk</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">functionalitycheckpro.FunctionalityCheck</div> <!-- chronological-class-name -->
+              <div class="configuration-test before">
+                <span class="method-name">befmethod(firefox)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="test-method">
+                <span class="method-name">logincheck(https://staging.myemedfusion.com, admin, Wellness58)</span>
+                <span class="method-start">6529 ms</span>
+              </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">AddGuarantorCheck</span>
-                <span class="method-start">0 ms</span>
+                <span class="method-start">29600 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-test after">
+                <span class="method-name">aftertest</span>
+                <span class="method-start">76751 ms</span>
+              </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

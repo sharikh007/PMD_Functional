@@ -23,7 +23,7 @@ import org.testng.annotations.*;
 
 public class Expchk {
 	
-	@Test(testName="Add Insurer Check",enabled=true,priority=2)
+	@Test(testName="Add Guarantor Check",enabled=false,priority=2)
 	public void AddGuarantorCheck() throws InterruptedException, AWTException{
 		System.getProperty("webdriver.chrome.driver","/path/to/chromedriver");
 		WebDriver dri=new FirefoxDriver();
@@ -44,12 +44,12 @@ public class Expchk {
 				  "_imgPatGuabtn']")));
 		dri.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1" +
 				                 "_imgPatGuabtn']")).click();
-		new WebDriverWait(dri, 50).until
+		/*new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
         (By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords")));
 		WebElement lis=dri.findElement(By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords"));
 		List<WebElement> liss=lis.findElements(By.tagName("tr"));
-		System.out.print(liss.size());
+		System.out.print(liss.size());*/
 		new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
         (By.id("ctl00_ContentPlaceHolder1_btnAddNewGuarantorRecords")));
@@ -79,12 +79,31 @@ public class Expchk {
 		new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
         (By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords")));
-		WebElement lit=dri.findElement(By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords"));
-		List<WebElement> lisss=lit.findElements(By.tagName("tr"));
-		boolean b=lisss.get(liss.size()).getText().contains("TesterNameis");
-		Assert.assertTrue(b,"Guarantor Not Getting Added");
+		WebElement lit=dri.findElement(By.id("ctl00_ContentPlaceHolder1_" +
+				                             "grdGuarantorRecords"));
+		List<WebElement> lisss=lit.findElements(By.tagName("a"));
+		int i=lisss.size()-10;
+		boolean b=false;
+		if(i>0){
+			dri.findElement(By.id("//*[@id='ctl00_ContentPlaceHolder1_grdInsuranceRecords']" +
+					              "/tbody/tr[6]/td/table/tbody/tr/td["+i+"]/a")).click();
+			List<WebElement> lisst=lit.findElements(By.tagName("a"));
+			for(int j=0;j<lisst.size();j++){
+				if(lisst.get(j).getText().contains("TesterNameis")){
+					b=true;
+				}
 		}
-	@Test(testName="Secure Communication Check",enabled=false,priority=2)
+		} else{
+			for(int j=0;j<lisss.size();j++){
+				if(lisss.get(j).getText().contains("TesterNameis")){
+					b=true;
+				}
+		}}
+		
+		
+		
+		}
+	@Test(testName="Secure Communication Check",enabled=true,priority=2)
 	public void SecureCommunicationCheckOne(){
 		WebDriver dri=new FirefoxDriver();
 		dri.get("https://staging.myemedfusion.com");
@@ -95,10 +114,15 @@ public class Expchk {
 				         "InsuranceGuarantor/InsuranceGuarantor.aspx?pid=10111");
 		new WebDriverWait(dri, 50).until
         (ExpectedConditions.visibilityOfElementLocated
-        (By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords")));
-		WebElement lis=dri.findElement(By.id("ctl00_ContentPlaceHolder1_grdGuarantorRecords"));
-		List<WebElement> liss=lis.findElements(By.tagName("tr"));
-		System.out.print(liss.get(0).getText());		
+        (By.id("ctl00_ContentPlaceHolder1_grdInsuranceRecords")));
+		WebElement lis=dri.findElement(By.id("ctl00_ContentPlaceHolder1_" +
+				                             "grdInsuranceRecords"));
+		List<WebElement> lisst=lis.findElements(By.tagName("a"));
+		if((lisst.size()-10)>0){
+			//*[@id='ctl00_ContentPlaceHolder1_grdInsuranceRecords']/tbody/tr[6]/td/table/tbody/tr/td[1]/a
+		}
+		
+		
        }
 	
 public String Uniquestring(){
