@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite1" duration-ms="120461" started-at="2015-07-23T09:50:28Z" finished-at="2015-07-23T09:52:28Z">
+    <groups>
+    </groups>
+    <test name="test2" duration-ms="120461" started-at="2015-07-23T09:50:28Z" finished-at="2015-07-23T09:52:28Z">
+      <class name="Laitkorgp.AppTest">
+        <test-method status="PASS" signature="bef(java.lang.String)[pri:0, instance:Laitkorgp.AppTest@1b4d41e]" name="bef" is-config="true" duration-ms="3682" started-at="2015-07-23T15:20:28Z" finished-at="2015-07-23T15:20:32Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bef -->
+        <test-method status="PASS" signature="eppregcheck()[pri:0, instance:Laitkorgp.AppTest@1b4d41e]" name="eppregcheck" duration-ms="68752" started-at="2015-07-23T15:20:32Z" finished-at="2015-07-23T15:21:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- eppregcheck -->
+        <test-method status="PASS" signature="closebrow()[pri:0, instance:Laitkorgp.AppTest@1b4d41e]" name="closebrow" is-config="true" duration-ms="626" started-at="2015-07-23T15:21:40Z" finished-at="2015-07-23T15:21:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closebrow -->
+        <test-method status="PASS" signature="bef(java.lang.String)[pri:0, instance:Laitkorgp.AppTest@1b4d41e]" name="bef" is-config="true" duration-ms="2095" started-at="2015-07-23T15:21:41Z" finished-at="2015-07-23T15:21:43Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bef -->
+        <test-method status="PASS" signature="eppregcheck()[pri:0, instance:Laitkorgp.AppTest@1b4d41e]" name="eppregcheck" duration-ms="44672" started-at="2015-07-23T15:21:43Z" finished-at="2015-07-23T15:22:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- eppregcheck -->
+        <test-method status="PASS" signature="closebrow()[pri:0, instance:Laitkorgp.AppTest@1b4d41e]" name="closebrow" is-config="true" duration-ms="615" started-at="2015-07-23T15:22:28Z" finished-at="2015-07-23T15:22:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closebrow -->
+      </class> <!-- Laitkorgp.AppTest -->
+    </test> <!-- test2 -->
+  </suite> <!-- Suite1 -->
+</testng-results>

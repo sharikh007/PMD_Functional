@@ -1,0 +1,42 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 3, Time elapsed: 74.264 sec <<< FAILURE! - in TestSuite
+bef(Laitkorgp.AppTest)  Time elapsed: 35.696 sec  <<< FAILURE!
+org.openqa.selenium.WebDriverException: Failed to connect to binary FirefoxBinary(/usr/bin/firefox) on port 7055; process output follows: 
+bfc2-0800200c9a66}":{"d":"/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{2e1445b0-2682-11e1-bfc2-0800200c9a66}","e":false,"v":"2014.08.06.beta","st":1421999490000,"mt":1407283796000},"ubufox@ubuntu.com":{"d":"/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/ubufox@ubuntu.com","e":false,"v":"3.0","st":1421999490000,"mt":1420839872000}},"app-system-local":{"online-accounts@lists.launchpad.net":{"d":"/usr/lib/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/online-accounts@lists.launchpad.net","e":false,"v":"0.5","st":1421999491000,"mt":1390969638000}}}
+1437484252380	addons.xpi	DEBUG	getModTime: Recursive scan of fxdriver@googlecode.com
+1437484252406	addons.xpi	DEBUG	getModTime: Recursive scan of {972ce4c6-7e08-4474-a285-3208198ce6fd}
+1437484252411	addons.xpi	DEBUG	getInstallState changed: false, state: {"app-profile":{"fxdriver@googlecode.com":{"d":"/tmp/anonymous768765754161956253webdriver-profile/extensions/fxdriver@googlecode.com","e":true,"v":"2.43.0","st":1437484217000,"mt":1437484217000}},"app-global":{"langpack-en-ZA@firefox.mozilla.org":{"d":"/usr/lib/firefox/browser/extensions/langpack-en-ZA@firefox.mozilla.org.xpi","e":false,"v":"35.0","st":1421097244000},"{972ce4c6-7e08-4474-a285-3208198ce6fd}":{"d":"/usr/lib/firefox/browser/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}","e":true,"v":"38.0","st":1432726039000,"mt":1431341938000},"langpack-en-GB@firefox.mozilla.org":{"d":"/usr/lib/firefox/browser/extensions/langpack-en-GB@firefox.mozilla.org.xpi","e":false,"v":"35.0","st":1421097244000}},"app-system-share":{"webapps-team@lists.launchpad.net":{"d":"/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/webapps-team@lists.launchpad.net","e":false,"v":"3.0.2","st":1421999490000,"mt":1397665356000},"{2e1445b0-2682-11e1-bfc2-0800200c9a66}":{"d":"/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{2e1445b0-2682-11e1-bfc2-0800200c9a66}","e":false,"v":"2014.08.06.beta","st":1421999490000,"mt":1407283796000},"ubufox@ubuntu.com":{"d":"/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/ubufox@ubuntu.com","e":false,"v":"3.0","st":1421999490000,"mt":1420839872000}},"app-system-local":{"online-accounts@lists.launchpad.net":{"d":"/usr/lib/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/online-accounts@lists.launchpad.net","e":false,"v":"0.5","st":1421999491000,"mt":1390969638000}}}
+1437484252436	addons.xpi	DEBUG	No changes found
+1437484252447	addons.manager	DEBUG	Registering shutdown blocker for XPIProvider
+1437484252456	addons.manager	DEBUG	Provider finished startup: XPIProvider
+1437484252457	addons.manager	DEBUG	Starting provider: LightweightThemeManager
+1437484252458	addons.manager	DEBUG	Registering shutdown blocker for LightweightThemeManager
+1437484252460	addons.manager	DEBUG	Provider finished startup: LightweightThemeManager
+1437484252465	addons.manager	DEBUG	Starting provider: GMPProvider
+1437484252487	addons.manager	DEBUG	Registering shutdown blocker for GMPProvider
+1437484252487	addons.manager	DEBUG	Provider finished startup: GMPProvider
+1437484252487	addons.manager	DEBUG	Starting provider: PluginProvider
+1437484252488	addons.manager	DEBUG	Registering shutdown blocker for PluginProvider
+1437484252488	addons.manager	DEBUG	Provider finished startup: PluginProvider
+1437484252488	addons.manager	DEBUG	Completed startup sequence
+JavaScript error: file:///tmp/anonymous768765754161956253webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js, line 11464: TypeError: this.server_ is undefined
+JavaScript error: chrome://fxdriver/content/server.js, line 38: NS_ERROR_XPC_CI_RETURNED_FAILURE: Component returned failure code: 0x80570015 (NS_ERROR_XPC_CI_RETURNED_FAILURE) [nsIJSCID.createInstance]
+*** Blocklist::_preloadBlocklistFile: blocklist is disabled
+1437484270850	addons.manager	DEBUG	Starting provider: <unnamed-provider>
+1437484270850	addons.manager	DEBUG	Registering shutdown blocker for <unnamed-provider>
+1437484270851	addons.manager	DEBUG	Provider finished startup: <unnamed-provider>
+
+Build info: version: '2.43.0', revision: 'accb3003b9fb8f7cae30f9669b4c594a065396a6', time: '2014-09-09 22:22:51'
+System info: host: 'sayed-MS-7309', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'i386', os.version: '3.13.0-44-generic', java.version: '1.7.0_75'
+Driver info: driver.version: FirefoxDriver
+	at org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.start(NewProfileExtensionConnection.java:118)
+	at org.openqa.selenium.firefox.FirefoxDriver.startClient(FirefoxDriver.java:246)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:114)
+	at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:191)
+	at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:186)
+	at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:182)
+	at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:95)
+	at Laitkorgp.AppTest.bef(AppTest.java:19)
+
