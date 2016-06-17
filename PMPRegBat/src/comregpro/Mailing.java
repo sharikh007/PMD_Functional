@@ -27,7 +27,7 @@ public class Mailing {
 	public static void MLS() throws IOException, InterruptedException {
 
     final String username = "haideraftab32@gmail.com";
-    final String password = "yaalimaulamadad@shariq!1";
+    final String password = "test";
     
 
     Properties props = new Properties();
