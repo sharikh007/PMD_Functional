@@ -1,0 +1,201 @@
+package clspck;
+
+
+
+import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+
+public class clsone {
+	
+	private static final String FILENAME = "/home/ro/Desktop/Crucial/filename.txt";
+	static MimeBodyPart messageBodyPart;
+	static Multipart multipart;
+	static Message message;
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		
+		File testfile=new File("/home/ro/Desktop/Crucial/filename.txt");
+		
+		boolean b=testfile.createNewFile();
+		boolean d = false;
+		if(b) {
+			System.out.println("File Created");
+		}
+		else {
+			System.out.println("File could not be created");
+		}
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+		boolean t=false;
+		// D:\\Selenium Jars\\geckodriver-v0.19.1-win64\\geckodriver.exe
+		System.setProperty("webdriver.gecko.driver","/home/ro/Desktop/Crucial/geckodriver");
+		WebDriver dri=new FirefoxDriver(new FirefoxOptions().setHeadless(true));
+    	dri.get("file:///home/ro/Desktop/Crucial/report.html");
+    	List<WebElement> lst=dri.findElements(By.className("panel-body"));
+    	//fw = new FileWriter(FILENAME);
+    	fw = new FileWriter(testfile);
+		bw = new BufferedWriter(fw);
+		bw.newLine();
+		bw.write("Description,Url & Status Of Failed Requests");
+		bw.newLine();
+		bw.write("____________________________________________");
+		bw.newLine();
+    	for(int i=0;i<lst.size();i++) {
+    		List<WebElement> lstone=lst.get(i).findElements(By.tagName("div"));
+    		if(lstone.get(16).getText().contains("0")) {
+    			d=true;
+    		}else {
+    			d=false;
+    		}
+    		
+    		if(d==false) {
+    			t=true;
+     		try {
+         
+    			bw.write(lstone.get(0).getText());
+    			bw.write(":");
+    			bw.write(lstone.get(1).getText());
+    			bw.write(",");
+    			bw.write(lstone.get(5).getText());
+    			bw.write(":");
+    			bw.write(lstone.get(6).getText());
+    			bw.write(",");
+    			bw.write(lstone.get(18).getText());
+    			bw.write(":");
+    			bw.write(lstone.get(19).getText());
+    			bw.newLine();
+    			
+
+    		} catch (IOException e) {
+
+    			e.printStackTrace();
+
+    		}
+    		}
+    		}
+    	bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();bw.newLine();
+    	bw.write("Best Regards!!");
+    	bw.newLine();
+    	bw.newLine();
+    	bw.write("*****This Report contains confidential information and is intended only for the individual and organization it is addressed to. If you are not the intended recipient, do not disseminate, distribute, copy this report (as it may be unlawful for you to do so) or take any action in reliance on it. Please notify the sender immediately by replying to shariq.abbas@authbridge.com and delete this from your system. .");
+    	bw.close();
+    	fw.close();
+        dri.close();
+        
+        if(t==true) {
+        	mailsend(readfile());
+        }
+	}
+	
+	public static void mailsend(StringBuilder stringBuilder) throws InterruptedException {
+		final String username = "shariq.abbas@authbridge.com";
+	    final String password = "yaalimaulamadad@shariq!1";
+	    
+
+	    Properties props = new Properties();
+	    props.put("mail.smtp.auth", true);
+	    props.put("mail.smtp.starttls.enable", false);
+	    props.put("mail.smtp.host", "smtp.gmail.com");
+	    props.put("mail.smtp.port", "465");
+	    props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+	    
+
+	    Session session = Session.getInstance(props,
+	            new javax.mail.Authenticator() {
+	                protected PasswordAuthentication getPasswordAuthentication() {
+	                    return new PasswordAuthentication(username, password);
+	                }
+	            });
+	     try {
+	    	 
+	     message = new MimeMessage(session);
+	     message.setFrom(new InternetAddress("shariq.abbas@authbridge.com"));
+	     message.setRecipients(Message.RecipientType.TO,
+	                InternetAddress.parse("shariq.abbas@authbridge.com,"
+	                		+ "ashish.gilotra@authbridge.com,mohit.chauhan@authbridge.com,"
+	                		+ "shubra.sood@authbridge.com,niranjan.jajware@authbridge.com,"
+	                		+ "abhishek.srivastava@authbridge.com,ayushi.goel@authbridge.com"));
+	     message.setSubject("TruthScreen WebService Suite Completed || "
+	     		+ "Problem Detected & Refer Attachment:Autosender Enabled");
+	     
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart.setText(stringBuilder.toString());
+			Multipart multipart = new MimeMultipart();
+			multipart.addBodyPart(messageBodyPart);
+			 messageBodyPart = new MimeBodyPart();
+			FileDataSource fds = new FileDataSource("/home/ro/Desktop/Crucial/filename.txt");
+			messageBodyPart.setDataHandler(new DataHandler(fds));
+			messageBodyPart.setFileName(fds.getName());
+			multipart.addBodyPart(messageBodyPart);
+	        message.setContent(multipart);
+	     Thread.sleep(5000);
+	        System.out.println("Sending");
+	        Transport.send(message);
+	        System.out.println("Done");
+	        } catch (MessagingException e) {
+	        e.printStackTrace();
+	    }
+		
+		
+	}
+	
+	public static StringBuilder readfile(){  
+		String strLine = null;
+		StringBuilder body = new StringBuilder();
+		body.append("Dear Recipient !!").append(System.getProperty("line.separator"));
+		body.append("Please find below mentioned report for latest test ran on truthscreen webservices.Incase if you want to download the result file then attachment has also been provided.").append(System.getProperty("line.separator")).append(System.getProperty("line.separator"));
+        try{
+          FileInputStream fstream = new FileInputStream("/home/ro/Desktop/Crucial/filename.txt");
+           DataInputStream in = new DataInputStream(fstream);
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+while ((strLine = br.readLine()) != null)   {
+                System.out.println (strLine);
+                body.append(strLine);
+                body.append(System.getProperty("line.separator"));
+            }
+             in.close();
+        }catch (Exception e){
+            System.err.println("Error: " + e.getMessage());
+        }
+        return body;
+    }
+
+	
+	
+	
+
+	
+	
+
+}
+
+	
